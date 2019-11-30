@@ -9,22 +9,23 @@ set smarttab
 set nocompatible   
 set laststatus=2
 
-set foldmethod=syntax
+set foldmethod=indent
 set foldlevel=99
 set encoding=utf-8
 
 set ignorecase
 set hlsearch
 set noswapfile
-se t_Co=256
 
 call plug#begin('~/.vim/plugged')
-Plug 'morhetz/gruvbox'
+Plug 'jnurmine/Zenburn'
+Plug 'altercation/vim-colors-solarized'
 Plug 'scrooloose/nerdtree'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'Valloric/YouCompleteMe'
 Plug 'scrooloose/syntastic'
 Plug 'Yggdroot/indentLine'
+Plug 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 call plug#end()   
 
 filetype plugin indent on 
@@ -33,6 +34,12 @@ syntax on
 " vim-color-solarized
 " set background=dark
 " colorscheme solarized
+if has('gui_running')
+  set background=dark
+  colorscheme solarized
+else
+  colorscheme zenburn
+endif
 
 " nerdtree
 map <F2> :NERDTreeToggle<CR>
@@ -73,6 +80,10 @@ let g:syntastic_cpp_compiler_options = ' -std=c++11'
 
 " indentLine
 let g:indentLine_setColors = 0
+
+" powerline
+let g:Powerline_symbols = 'fancy'
+set laststatus=2
 
 " switch window
 nnoremap <C-J> <C-W><C-J>
